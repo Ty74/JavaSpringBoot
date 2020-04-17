@@ -1,0 +1,57 @@
+--------------------------------- CORRECT FORMAT OF XML  START ------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   
+	   xmlns:context="
+	      http://www.springframework.org/schema/context/"
+	      
+	   xsi:schemaLocation="
+	   http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-4.0.xsd ">
+
+
+	<bean id="name"
+		class="com.all.content.xmljdbcdaoexample.xmljdbcdaoexampledemo.XDAO">
+		<property name="name" value="true"/>
+	</bean>
+
+	<bean id="xjdbcService"
+		class="com.all.content.xmljdbcdaoexample.xmljdbcdaoexampledemo.XmlJdbcExample"></bean>
+	
+
+      <bean id="car"
+		class="com.all.content.xmljdbcdaoexampledemo.car.info.CarInformation">	
+	</bean>
+</beans>
+   
+  -------------------------------CORRECT FORMAT OF XML END----------------------------------------------------------------------- 
+   
+    <!-- The xsi:schemeLocation needs to be in this format
+      <beans> xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   
+	   xmlns:context="
+	      http://www.springframework.org/schema/context/"
+           xsi:schemaLocation="
+	   http://www.springframework.org/schema/beans /*Ensure that the bean folder path is below the scheme location*/
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd /* Ensure that the xsd file location for the bean is located just below the location to the beans folder path name*/
+	   http://www.springframework.org/schema/context /*Ensure that the context folder path is below the spring-beans-4.0.xsd*/
+	   http://www.springframework.org/schema/context/spring-context-4.0.xsd "> /*Ensure that the context folder name is above the spring-context-4.0.xsd path*/
+    
+    
+     -->
+
+	<!--  The component-scan have been deprecated at version 5 spring <context:component-scan base-package="com.all.content.xmljdbcdaoexample.xmljdbcdaoexampledemo"></context:component-scan> -->
+	<!-- You have to make sure that the class path is written with .notations and that it has the name of the class at the end of the dot notation -->	
+	<!--  You have to make sure that there is a space between the bean is in this format 
+	
+	<bean id="name"     /*There has to be a space here*/
+		class="com.all.content.xmljdbcdaoexample.xmljdbcdaoexampledemo.XDAO">/*This has to appear below the initial line*/
+		<property name="name" value="true"/> /*Property names goes between here*/
+	</bean>
+	
+	-->

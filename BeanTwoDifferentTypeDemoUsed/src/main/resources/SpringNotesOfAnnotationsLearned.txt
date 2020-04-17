@@ -1,0 +1,31 @@
+@SpringBootApplication// The @SpringBootApplication scans the package and the packages within the package... Makes spring know whats there
+@ComponentScan("com.BeanTwoDifferentTypeDemoUsed.basic.componentscan")
+/*The @ComponentScan annotation will look for whatever classes are within the package that you should name wihtin the @ComponentScan annotation
+ * Tells spring where the beans are external of a package that you are working from*/
+@Component/*Tells Spring where the beans are within a given package*/
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode=ScopedProxyMode.TARGET_CLASS)
+/*
+ * Within this scope annotation, it requires two different parameters one being the " value=ConfigurableBeanFactory.SCOPE_PROTOTYPE"
+ * and the other being "proxyMode=ScopedProxyMode.TARGET_CLASS". Because the JdbcConnection class is not being called directly from the 
+ * main class, but indirectly, it causes the output to display as if it were a singleton response without these to scope parameters added.
+ * This means that the signature numbers of the response will be the same for each instance even though they are different instances.
+ * However, with those two parameters added , each response will show different signature numbers. 
+ * 
+ * 
+ * */
+ 
+ 
+ @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+/*
+ * This Scope annotation only requires one parameter because this class is being called directly. When uncommented
+ * it would produce a different signature response everytime. 
+ * 
+ * */
+ 
+ 
+  @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+/*
+ * This Scope annotation only requires one parameter because this class is being called directly. When uncommented
+ * it would produce same signature response everytime. 
+ * 
+ * */
